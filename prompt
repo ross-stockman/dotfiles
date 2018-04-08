@@ -1,0 +1,89 @@
+# get current branch in git repo
+function parse_git_branch() {
+	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+	if [ ! "${BRANCH}" == "" ]
+	then
+		STAT=`parse_git_dirty`
+		echo "[${BRANCH}${STAT}]"
+	else
+		echo ""
+	fi
+}
+
+# get current status of git repo
+function parse_git_dirty {
+	status=`git status 2>&1 | tee`
+	dirty=`echo -n "${status}" 2> /dev/null | grep "modified:" &> /dev/null; echo "$?"`
+	untracked=`echo -n "${status}" 2> /dev/null | grep "Untracked files" &> /dev/null; echo "$?"`
+	ahead=`echo -n "${status}" 2> /dev/null | grep "Your branch is ahead of" &> /dev/null; echo "$?"`
+	newfile=`echo -n "${status}" 2> /dev/null | grep "new file:" &> /dev/null; echo "$?"`
+	renamed=`echo -n "${status}" 2> /dev/null | grep "renamed:" &> /dev/null; echo "$?"`
+	deleted=`echo -n "${status}" 2> /dev/null | grep "deleted:" &> /dev/null; echo "$?"`
+	bits=''
+	if [ "${renamed}" == "0" ]; then
+		bits=">${bits}"
+	fi
+	if [ "${ahead}" == "0" ]; then
+		bits="*${bits}"
+	fi
+	if [ "${newfile}" == "0" ]; then
+		bits="+${bits}"
+	fi
+	if [ "${untracked}" == "0" ]; then
+		bits="?${bits}"
+	fi
+	if [ "${deleted}" == "0" ]; then
+		bits="x${bits}"
+	fi
+	if [ "${dirty}" == "0" ]; then
+		bits="!${bits}"
+	fi
+	if [ ! "${bits}" == "" ]; then
+		echo " ${bits}"
+	else
+		echo ""
+	fi
+}
+
+red="0;31"
+green="0;32"
+lime="1;32"
+yellow="1;33"
+blue="0;34"
+cyan="0;36"
+purple="0;35"
+
+datetime="\d \A"
+username="\u"
+hostname="\h"
+directory="\w"
+prompt_character="\$"
+newline="\n"
+icon=$'\u27a5'
+
+function prompt {
+    PS1+="$1"
+}
+
+function prompt_color {
+    PS1+="\e[$2m$1\e[m"
+}
+
+PS1="\[$(tput bold)\]"
+prompt "$newline"
+prompt_color "$icon" "$lime"
+prompt " "
+prompt_color "$datetime" "$green"
+prompt " "
+prompt_color "$username" "$red"
+prompt "@"
+prompt_color "$hostname" "$cyan"
+prompt ":"
+prompt_color "$directory" "$green"
+prompt " "
+prompt_color "\`parse_git_branch\`" "$purple"
+prompt "$newline"
+prompt "$prompt_character"
+prompt " "
+
+export PS1
