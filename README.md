@@ -17,4 +17,5 @@ Install the usual things
 sudo apt-get install vim openssh-server ssh wget unzip vim htop curl libxml2-utils default-jdk scala ant maven gradle -y
 ```
 Create a secrets file
+
 Download jasypt and set $JASYPT_HOME
