@@ -1,0 +1,8 @@
+[user]
+	name = Ross Stockman
+	email = ross.stockman@gmail.com
+[push]
+	default = simple
+[alias]
+	logs = "log --graph --pretty=tformat:\"%Cred%h%Creset (%Cgreen%cd%Creset, %C(bold blue)%an%Creset): %s%C(yellow)%d%Creset\" --date=format:\"%Y-%m-%d %H:%M\" --abbrev-commit"
+	commits = log --graph --pretty=tformat:\"%Cred%h%Creset (%Cgreen%cd%Creset, %C(bold blue)%an%Creset): %s%C(yellow)%d%Creset\" --date=format:\"%Y-%m-%d %H:%M\" --abbrev-commit
