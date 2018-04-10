@@ -1,15 +1,16 @@
-export BASH_HOME=~/git/bash
+export DOTFILES_HOME=~/git/dotfiles
+export SECRETS_HOME=~/git/secrets
 
 if [ -f ~/.bashrc_default ]; then
 	. ~/.bashrc_default
 fi
 
-if [ -f ~/git/secrets/.secrets ]; then
-	. ~/git/secrets/.secrets
+if [ -f $SECRETS_HOME/.secrets ]; then
+	. $SECRETS_HOME/.secrets
 fi
 
-. $BASH_HOME/.bash_aliases
-. $BASH_HOME/.bash_prompt
+. $DOTFILES_HOME/.bash_aliases
+. $DOTFILES_HOME/.bash_prompt
 
 export JAVA_HOME=/usr/lib/jvm/default-java
 export PATH=$PATH:$JAVA_HOME/bin
