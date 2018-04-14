@@ -14,3 +14,6 @@ fi
 
 export JAVA_HOME=/usr/lib/jvm/default-java
 export PATH=$PATH:$JAVA_HOME/bin
+
+export VISUAL=vim
+export EDITOR=$VISUAL
