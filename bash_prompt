@@ -45,6 +45,6 @@ function git_prompt () {
 }
 
 
-PS1="\n${RED}\u ${NC}at${GREEN} \h ${NC}in${BLUE} \w${NC}\`git_prompt\`${NC}\n\$ "
+PS1="\n${RED}\u ${NC}at${GREEN} \h ${NC}in${BLUE} \w${NC}\`git_prompt\`${NC}\n\\\$ "
 
 export PS1
