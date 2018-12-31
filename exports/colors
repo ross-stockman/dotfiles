@@ -1,0 +1,95 @@
+#!/bin/bash
+
+# Reset
+NC='\033[0m'
+
+# Black
+BLACK='\033[0;30m'
+BOLD_BLACK='\033[1;30m'
+BG_BLACK='\033[0;40m'
+UNDERSCORE_BLACK='\033[4;30m'
+
+# Red
+RED='\033[0;31m'
+BOLD_RED='\033[1;31m'
+BG_RED='\033[0;41m'
+UNDERSCORE_RED='\033[4;31m'
+
+# Green
+GREEN='\033[0;32m'
+BOLD_GREEN='\033[1;32m'
+BG_GREEN='\033[0;42m'
+UNDERSCORE_GREEN='\033[4;32m'
+
+# Yellow
+YELLOW='\033[0;33m'
+BOLD_YELLOW='\033[1;33m'
+BG_YELLOW='\033[0;43m'
+UNDERSCORE_YELLOW='\033[4;33m'
+
+# Blue
+BLUE='\033[0;34m'
+BOLD_BLUE='\033[1;34m'
+BG_BLUE='\033[0;44m'
+UNDERSCORE_BLUE='\033[4;34m'
+
+# Magenta
+MAGENTA='\033[0;35m'
+BOLD_MAGENTA='\033[1;35m'
+BG_MAGENTA='\033[0;45m'
+UNDERSCORE_MAGENTA='\033[4;35m'
+
+# Cyan
+CYAN='\033[0;36m'
+BOLD_CYAN='\033[1;36m'
+BG_CYAN='\033[0;46m'
+UNDERSCORE_CYAN='\033[4;36m'
+
+# Gray
+GRAY='\033[0;37m'
+BOLD_GRAY='\033[1;37m'
+BG_GRAY='\033[0;47m'
+UNDERSCORE_GRAY='\033[4;37m'
+
+function test_colors() {
+	echo
+	echo "=============================="
+	echo " test_colors enabled"
+	echo "=============================="
+	echo -e "default color"
+        echo -e "${BLACK}black color${NC}"
+        echo -e "${BOLD_BLACK}bold black color${NC}"
+        echo -e "${BG_BLACK}background black color${NC}"
+        echo -e "${UNDERSCORE_BLACK}underscore black color${NC}"
+        echo -e "${RED}red color${NC}"
+        echo -e "${BOLD_RED}bold red color${NC}"
+        echo -e "${BG_RED}background red color${NC}"
+        echo -e "${UNDERSCORE_RED}underscore red color${NC}"
+        echo -e "${GREEN}green color${NC}"
+        echo -e "${BOLD_GREEN}green blue color${NC}"
+        echo -e "${BG_GREEN}background green color${NC}"
+        echo -e "${UNDERSCORE_GREEN}underscore green color${NC}"
+        echo -e "${YELLOW}yellow color${NC}"
+        echo -e "${BOLD_YELLOW}bold yellow color${NC}"
+        echo -e "${BG_YELLOW}background yellow color${NC}"
+        echo -e "${UNDERSCORE_YELLOW}underscore yellow color${NC}"
+        echo -e "${BLUE}blue color${NC}"
+        echo -e "${BOLD_BLUE}bold blue color${NC}"
+        echo -e "${BG_BLUE}background blue color${NC}"
+        echo -e "${UNDERSCORE_BLUE}underscore blue color${NC}"
+        echo -e "${MAGENTA}magenta color${NC}"
+        echo -e "${BOLD_MAGENTA}bold magenta color${NC}"
+        echo -e "${BG_MAGENTA}background magenta color${NC}"
+        echo -e "${UNDERSCORE_MAGENTA}underscore magenta color${NC}"
+        echo -e "${CYAN}cyan color${NC}"
+        echo -e "${BOLD_CYAN}bold cyan color${NC}"
+        echo -e "${BG_CYAN}background cyan color${NC}"
+        echo -e "${UNDERSCORE_CYAN}underscore cyan color${NC}"
+        echo -e "${GRAY}gray color${NC}"
+        echo -e "${BOLD_GRAY}bold gray color${NC}"
+        echo -e "${BG_GRAY}background gray color${NC}"
+        echo -e "${UNDERSCORE_GRAY}underscore gray color${NC}"
+}
+
+#test_colors
+
