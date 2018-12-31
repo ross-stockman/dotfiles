@@ -1,0 +1,50 @@
+#!/bin/bash
+
+function git_branch () {
+  echo -n `git branch 2> /dev/null |grep "^\*" |sed 's/\* //'`
+}
+
+function git_status () {
+  status=`git status 2> /dev/null`
+  if [ ! "$?" == "0" ]; then
+    return
+  fi
+  echo -n "${status}" 2> /dev/null | grep "renamed:" &> /dev/null
+  if [ "$?" == "0" ]; then
+    echo -n ">"
+  fi
+  echo -n "${status}" 2> /dev/null | grep "Your branch is ahead of" &> /dev/null
+  if [ "$?" == "0" ]; then
+    echo -n "*"
+  fi
+  echo -n "${status}" 2> /dev/null | grep "new file:" &> /dev/null
+  if [ "$?" == "0" ]; then
+    echo -n "+"
+  fi
+  echo -n "${status}" 2> /dev/null | grep "Untracked files:" &> /dev/null
+  if [ "$?" == "0" ]; then
+    echo -n "?"
+  fi
+  echo -n "${status}" 2> /dev/null | grep "deleted:" &> /dev/null
+  if [ "$?" == "0" ]; then
+    echo -n "x"
+  fi
+  echo -n "${status}" 2> /dev/null | grep "modified:" &> /dev/null
+  if [ "$?" == "0" ]; then
+    echo -n "!"
+  fi
+}
+
+function git_prompt () {
+  branch=`git_branch`
+  if [ "${branch}" == "" ]; then
+    return
+  fi
+  status=`git_status`
+  echo -n -e " on ${MAGENTA}${branch}${status}${NC}"
+}
+
+
+PS1="\n${RED}\u ${NC}at${GREEN} \h ${NC}in${BLUE} \w${NC}\`git_prompt\`${NC}\n$ "
+
+export PS1
