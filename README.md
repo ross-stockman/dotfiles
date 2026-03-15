@@ -1,21 +1,41 @@
-Clone this repo and setup the links
+# Dotfiles
 
-```
-sudo apt-get update && sudo apt-get upgrade -y
-sudo apt-get install git -y
+Minimal dotfiles configuration for macOS (M1+, zsh).
 
-mkdir -p ~/git/bash
-git clone https://github.com/ross-stockman/bash.git git/bash
+## Setup
 
-mv ~/.bashrc ~/.bashrc_default
+1. **Clone the repository**
+   Clone to `~/dotfiles`. If you prefer a different location (e.g., `~/git/dotfiles`), clone there and create a symlink: `ln -s ~/git/dotfiles ~/dotfiles`.
+   ```bash
+   git clone https://github.com/rossstockman/dotfiles.git ~/dotfiles
+   ```
 
-ln -fs ~/git/bash/bashrc ~/.bashrc
-```
-Install the usual things
+2. **Configure Zsh**
+   Add the following to your `~/.zshrc`:
+   ```zsh
+   # --- dotfiles root ---
+   DOTFILES="$HOME/dotfiles"
+   # --- zsh config ---
+   [[ -f "$DOTFILES/zsh/aliases.zsh" ]] && source "$DOTFILES/zsh/aliases.zsh"
+   [[ -f "$DOTFILES/zsh/prompt.zsh" ]] && source "$DOTFILES/zsh/prompt.zsh"
+   ```
 
-```
-sudo apt-get install vim openssh-server ssh wget unzip vim htop curl libxml2-utils default-jdk scala ant maven gradle -y
-```
-Create a secrets file
+3. **Configure Git**
+   Add the following to your `~/.gitconfig`:
+   ```gitconfig
+   [include]
+       path = ~/dotfiles/git/gitconfig
+   ```
 
-Download jasypt and set $JASYPT_HOME
+4. **Personal Secrets**
+   Create `~/dotfiles/.secrets/gitconfig` (this file is git-ignored):
+   ```gitconfig
+   [user]
+       name = Your Name
+       email = your.email@example.com
+   ```
+
+## Contents
+- `zsh/`: Custom prompt and aliases.
+- `git/`: Shared git configuration and global ignore rules.
+- `.secrets/`: Local machine-specific overrides.
