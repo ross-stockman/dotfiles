@@ -18,6 +18,7 @@ Minimal dotfiles configuration for macOS (M1+, zsh).
    # --- zsh config ---
    [[ -f "$DOTFILES/zsh/aliases.zsh" ]] && source "$DOTFILES/zsh/aliases.zsh"
    [[ -f "$DOTFILES/zsh/prompt.zsh" ]] && source "$DOTFILES/zsh/prompt.zsh"
+   [[ -f "$DOTFILES/.secrets/env.zsh" ]] && source "$DOTFILES/.secrets/env.zsh"
    ```
 
 3. **Configure Git**
