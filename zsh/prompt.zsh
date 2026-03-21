@@ -61,7 +61,7 @@ update_prompt_state() {
     GIT_FLAGS=$(git_prompt_flags)
 
     if [[ -n $vcs_info_msg_0_ ]]; then
-        GIT_PROMPT="[${vcs_info_msg_0_}${GIT_FLAGS}]"
+        GIT_PROMPT="[${vcs_info_msg_0_}${GIT_FLAGS}] "
     else
         GIT_PROMPT=""
     fi
@@ -84,5 +84,5 @@ else
     PROMPT_SYMBOL="➜"
 fi
 
-PROMPT='%F{red}%n%f@%F{cyan}%m%f:%F{green}%~%f %F{magenta}${GIT_PROMPT}%f
-${PROMPT_SYMBOL} '
+PROMPT='%F{red}%n%f@%F{cyan}%m%f:%F{green}%~%f
+%F{magenta}${GIT_PROMPT}%f${PROMPT_SYMBOL} '
